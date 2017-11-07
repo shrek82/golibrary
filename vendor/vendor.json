@@ -1,0 +1,13 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "fAz62j7vR7Q1DPMQRY/jHDjmEMc=",
+			"path": "github.com/axgle/mahonia",
+			"revision": "0c44128a83abf861873f8f4ec81fe58ff1cf6ea4",
+			"revisionTime": "2017-08-26T12:16:38Z"
+		}
+	],
+	"rootPath": "sosho.cn/golibrary"
+}

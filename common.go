@@ -128,7 +128,11 @@ func ToInt(val interface{}) int {
 		return int(v)
 	} else if v, ok := val.(int16); ok {
 		return int(v)
+	} else if v, ok := val.(int32); ok {
+		return int(v)
 	} else if v, ok := val.(int64); ok {
+		return int(v)
+	} else if v, ok := val.(float32); ok {
 		return int(v)
 	} else if v, ok := val.(float64); ok {
 		return int(v)
@@ -181,7 +185,7 @@ type FileType struct {
 //文件系统、编码探测器
 type FileDetector struct {
 	Text      []string //编码探测文本
-	DetLength int     //探测内容文本长度
+	DetLength int      //探测内容文本长度
 }
 
 //获取远程或本地文件类型

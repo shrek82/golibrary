@@ -55,7 +55,7 @@ func TestFileDetector(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	} else if fileType.os != "linux" {
-		t.Errorf("failed to get system type:%s",fileType.os)
+		t.Errorf("failed to get system type:%s", fileType.os)
 	} else if fileType.encoding != "utf8" {
 		t.Error("coding failed to get")
 	}
@@ -64,7 +64,7 @@ func TestFileDetector(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	} else if fileType.os != "mac" {
-		t.Errorf("failed to get system type:%s",fileType.os)
+		t.Errorf("failed to get system type:%s", fileType.os)
 	} else if fileType.encoding != "utf8" {
 		t.Error("coding failed to get")
 	}
@@ -73,7 +73,7 @@ func TestFileDetector(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	} else if fileType.os != "mac" {
-		t.Errorf("failed to get system type:%s",fileType.os)
+		t.Errorf("failed to get system type:%s", fileType.os)
 	} else if fileType.encoding != "gbk" {
 		t.Error("coding failed to get")
 	}
@@ -82,7 +82,7 @@ func TestFileDetector(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	} else if fileType.os != "windows" {
-		t.Errorf("failed to get system type:%s",fileType.os)
+		t.Errorf("failed to get system type:%s", fileType.os)
 	} else if fileType.encoding != "gbk" {
 		t.Error("coding failed to get")
 	}
@@ -91,8 +91,36 @@ func TestFileDetector(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	} else if fileType.os != "windows" {
-		t.Errorf("failed to get system type:%s",fileType.os)
+		t.Errorf("failed to get system type:%s", fileType.os)
 	} else if fileType.encoding != "utf8" {
 		t.Error("coding failed to get")
+	}
+}
+
+func TestToInt(t *testing.T) {
+	var a int = 1
+	var b int8 = 100
+	var c int16 = 1000
+	var d int32 = 10000
+	var e int64 = 100000
+	var f float32 = 100.00
+	var g float64 = 1000.00
+	var h string = "1000"
+	if ToInt(a) != 1 {
+		t.Error("Type conversion error")
+	} else if ToInt(b) != 100 {
+		t.Error("Type conversion error")
+	} else if ToInt(c) != 1000 {
+		t.Error("Type conversion error")
+	} else if ToInt(d) != 10000 {
+		t.Error("Type conversion error")
+	} else if ToInt(e) != 100000 {
+		t.Error("Type conversion error")
+	} else if val := ToInt(f); val != 100 {
+		t.Error("Type conversion error")
+	} else if val := ToInt(g); val != 1000 {
+		t.Error("Type conversion error")
+	} else if val := ToInt(h); val != 1000 {
+		t.Error("Type conversion error")
 	}
 }

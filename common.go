@@ -178,8 +178,8 @@ func ByteString(b []byte) string {
 
 //文件类型
 type FileType struct {
-	os       string //系统类型
-	encoding string //文字编码
+	Os       string //系统类型
+	Encoding string //文字编码
 }
 
 //文件系统、编码探测器
@@ -212,13 +212,13 @@ func (c *FileDetector) FileType(path string) (*FileType, error) {
 	if _, err := reader.Read(buf); err != nil {
 		return fileType, errors.New("文件读取失败")
 	} else if strings.IndexByte(string(buf), '\r') > 0 && strings.IndexByte(string(buf), '\n') >= 0 {
-		fileType.os = "windows"
+		fileType.Os = "windows"
 	} else if strings.IndexByte(string(buf), '\n') >= 0 {
-		fileType.os = "linux"
+		fileType.Os = "linux"
 	} else if strings.IndexByte(string(buf), '\r') >= 0 {
-		fileType.os = "mac"
+		fileType.Os = "mac"
 	} else {
-		fileType.os = "unknown"
+		fileType.Os = "unknown"
 	}
 	header := string(buf)
 	if header == "" {
@@ -226,7 +226,7 @@ func (c *FileDetector) FileType(path string) (*FileType, error) {
 	}
 	for _, text := range c.Text {
 		if strings.Contains(header, text) {
-			fileType.encoding = "utf8"
+			fileType.Encoding = "utf8"
 			return fileType, nil
 		}
 	}
@@ -235,7 +235,7 @@ func (c *FileDetector) FileType(path string) (*FileType, error) {
 	utf8Str := coder.Utf8(header)
 	for _, text := range c.Text {
 		if strings.Contains(utf8Str, text) {
-			fileType.encoding = "gbk"
+			fileType.Encoding = "gbk"
 			return fileType, nil
 		}
 	}
